@@ -10,6 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.zekierciyas.document_scanner_mlkit.document_scanner.DocumentScanner
+import com.zekierciyas.document_scanner_mlkit.ui.screens.DocumentScannerScreen
 import com.zekierciyas.document_scanner_mlkit.ui.theme.DocumentscannermlkitTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,21 +19,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        documentScanner.init().result {
-
-        }
-
         setContent {
             DocumentscannermlkitTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Text(text = "Start", modifier = Modifier.clickable {
-                        documentScanner.start{
-
-                        }
-                    })
+                   DocumentScannerScreen(documentScanner = documentScanner)
                 }
             }
         }
